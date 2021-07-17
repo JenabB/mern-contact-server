@@ -31,7 +31,7 @@ exports.getContactById = async (req, res, next) => {
       data: contact,
     });
   } catch (error) {
-    return res.send(500).json({
+    return res.status(500).json({
       success: false,
       error: 'server error',
     });
