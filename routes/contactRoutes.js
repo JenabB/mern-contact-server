@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
   getContacts,
+  getContactById,
   addContact,
   editContact,
   deleteContact,
@@ -10,6 +11,6 @@ const {
 
 router.route('/').get(getContacts).post(addContact);
 
-router.route('/:id').put(editContact).delete(deleteContact);
+router.route('/:id').get(getContactById).put(editContact).delete(deleteContact);
 
 module.exports = router;

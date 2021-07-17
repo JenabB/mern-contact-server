@@ -16,6 +16,28 @@ exports.getContacts = async (req, res, next) => {
   }
 };
 
+exports.getContactById = async (req, res, next) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
+
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        error: 'No transaction found',
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      data: contact,
+    });
+  } catch (error) {
+    return res.send(500).json({
+      success: false,
+      error: 'server error',
+    });
+  }
+};
+
 exports.addContact = async (req, res, next) => {
   try {
     const { name, phonenumber, information, group } = req.body;
